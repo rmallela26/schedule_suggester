@@ -20,14 +20,32 @@ class Schedule_Finder:
 
         #[major, minor, concentration, term, career, special, summer, something specific you want to learn]
         weights = [3, 7, 3, 7, 2, 2, 1, 2]
+        weights = {
+            'major': 3,
+            'minor': 7,
+            'concentration': 3,
+            'semester': 7,
+            'career': 2,
+            'special': 2,
+            'summer': 1,
+            'specific': 2
+        }
         distance = 0
 
-        for i in range(len(x)):
-            if i == 3: #if it is the term 
-                distance += weights[i] * abs(x[i] - y[i])
+        for key in dict:
+            if key == 'semester':
+                distance += weights[key] * abs(x[key] - y[key])
             else:
-                if x[i] != y[i]: 
-                    distance += weights[i]
+                if x[key] != y[key]: 
+                    distance += weights[key]
+
+
+        # for i in range(len(x)):
+        #     if i == 3: #if it is the term 
+        #         distance += weights[i] * abs(x[i] - y[i])
+        #     else:
+        #         if x[i] != y[i]: 
+        #             distance += weights[i]
 
         return distance 
     
